@@ -1,0 +1,35 @@
+{
+  "name": "@lsby/tencent-cloud-certbot-dns-hook",
+  "version": "0.0.1",
+  "description": "Certbot DNS-01 auth and cleanup hooks for Tencent Cloud DNSPod",
+  "type": "module",
+  "bin": {
+    "lsby-tencent-cloud-certbot-dns-hook-auth": "dist/auth.js",
+    "lsby-tencent-cloud-certbot-dns-hook-cleanup": "dist/cleanup.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build:all": "tsc",
+    "other:format": "prettier --write .",
+    "other:typecheck": "tsc --project tsconfig.test.json --noEmit",
+    "other:pub": "npm run build:all && bumpp && pnpm -r publish --access public",
+    "test": "tsx --test test/*.test.ts",
+    "prepack": "pnpm run build:all"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "tencentcloud-sdk-nodejs-dnspod": "^4.1.266"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "bumpp": "^12.3.0",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.3",
+    "typescript": "^5.4.5"
+  }
+}
